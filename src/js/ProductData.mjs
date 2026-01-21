@@ -1,4 +1,4 @@
-
+//this file handles the retrieval of product data from a JSON file
 
 export default class ProductData {
   constructor(category) {

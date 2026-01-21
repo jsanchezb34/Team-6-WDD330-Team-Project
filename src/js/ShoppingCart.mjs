@@ -1,4 +1,4 @@
-//this file creates the product cards and displays them.
+//this file creates the Shopping cart and displays it.
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
