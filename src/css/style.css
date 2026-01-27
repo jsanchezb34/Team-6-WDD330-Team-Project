@@ -261,3 +261,14 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 0.5rem;
+}
+
+.final-price {
+  font-weight: bold;
+  color: #000;
+}

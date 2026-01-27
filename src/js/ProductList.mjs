@@ -1,17 +1,28 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate } from "../public/js/utils.mjs";
 
 function productCardTemplate(product) {
+  const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
+
   return `
     <li class="product-card">
       <a href="product_pages/?products=${product.Id}">
         <img src="${product.Image}" alt="${product.Name}">
         <h2>${product.Brand.Name}</h2>
         <h3>${product.Name}</h3>
-        <p class="product-card__price">$${product.FinalPrice}</p>
+
+        <p class="product-card__price">
+          ${
+            isDiscounted
+              ? `<span class="original-price">$${product.SuggestedRetailPrice}</span>
+                 <span class="final-price">$${product.FinalPrice}</span>`
+              : `<span class="final-price">$${product.FinalPrice}</span>`
+          }
+        </p>
       </a>
     </li>
-    `;
+  `;
 }
+
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -33,5 +44,7 @@ export default class ProductList {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
 
   }
+
+
 
 }
