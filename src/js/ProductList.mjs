@@ -12,7 +12,7 @@ function productCardTemplate(product) {
     </li>
     `;
 }
-
+ 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
     this.category = category;
@@ -26,12 +26,13 @@ export default class ProductList {
   }
 
   renderList(list) {
-    // const htmlStrings = list.map(productCardTemplate);
-    // this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
+    const htmlStrings = list.map(productCardTemplate);
+     this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
 
     // apply use new utility function instead of the commented code above
     renderListWithTemplate(productCardTemplate, this.listElement, list);
 
   }
+
 
 }
