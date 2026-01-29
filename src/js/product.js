@@ -1,5 +1,8 @@
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+// This file is responsible for handling the "Add to Cart" functionality.
+import { setLocalStorage, getLocalStorage , loadHeaderFooter} from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
+
+loadHeaderFooter();
 
 const dataSource = new ProductData("tents");
 
