@@ -261,3 +261,19 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.product-categories {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.category-img {
+  width: 200px; /* adjust as needed */
+  height: auto; 
+  transition: transform 0.2s;
+}
+
+.category-img:hover {
+  transform: scale(1.05); /* subtle hover effect */
+}
