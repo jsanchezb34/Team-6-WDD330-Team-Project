@@ -1,3 +1,4 @@
+// this file handles the display and interaction of product details on the product details page
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 export default class ProductDetails {
