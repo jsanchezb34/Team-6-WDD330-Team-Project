@@ -1,27 +1,36 @@
 //this file creates the product cards and displays them.
 import { renderListWithTemplate } from "./utils.mjs";
 
+
 function productCardTemplate(product) {
   
-  const hasDiscount = product.FinalPrice !== product.Price;
-  const discountPercent = hasDiscount
-    ? Math.round(((product.Price - product.FinalPrice) / product.Price) * 100) : 0;
+  const brandName = product.Brand?.Name || "";
+  const discountPercent = Math.round(((product.Price - product.FinalPrice) / product.Price) * 100);
+  
+  // 1. Initialize an empty string
+  let discountHTML = '';
+
+  if (discountPercent > 0) {
+    discountHTML = `<span>(${discountPercent}% OFF)</span>`;
+  } else {
+    discountHTML = ''; // stays empty if no difference
+  }
 
   return `
     <li class="product-card">
       <a href="product_pages/?products=${product.Id}">
         <img src="${product.Image}" alt="${product.Name}">
-        <h2>${product.Brand.Name}</h2>
+        <h2>${brandName}</h2>
         <h3>${product.Name}</h3>
-         <p class="product-card__price">
-          ${hasDiscount 
-            ? `$${product.FinalPrice.toFixed(2)} (${discountPercent}% OFF)` 
-            : `$${product.FinalPrice.toFixed(2)}`}
+          <p class="product-card__price">
+            $${product.FinalPrice.toFixed(2)} 
+            ${discountHTML} 
         </p>
       </a>
     </li>
     `;
 }
+
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
